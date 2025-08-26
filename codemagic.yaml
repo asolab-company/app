@@ -4,7 +4,7 @@ workflows:
     environment:
       xcode: latest
       ios_signing:
-        distribution_type: app_store
+        distribution_type: development
         bundle_identifier: com.testbongame.app
     scripts:
       - name: Install dependencies
