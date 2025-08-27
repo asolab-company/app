@@ -1,22 +1,8 @@
 workflows:
-  ios-testflight:
-    name: iOS TestFlight Build
+  ios-workflow:
+    name: iOS Workflow 
+    # ....
     environment:
-      xcode: latest
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.testbongame.app
-    scripts:
-      - name: Install dependencies
-        script: echo "No dependencies to install"
-      - name: Build .ipa
-        script: |
-          xcode-project build-ipa \
-            --project "SkateTrack.xcodeproj" \
-            --scheme "SkateTrack"
-
-    publishing:
-      app_store_connect:
-        api_key: QDV3JA55KB
-        key_id: QDV3JA55KB
-        issuer_id: 74b75ecb-c414-4703-b240-4b603d6e583e
