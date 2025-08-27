@@ -13,6 +13,7 @@ workflows:
            --project SkateTrack.xcodeproj \
            --scheme SkateTrack \
            --config Release
+           --export-options-plist "$(pwd)/app/export_options.plist"
     artifacts:
       - build/app/ipa/*.ipa
     publishing:
@@ -22,5 +23,3 @@ workflows:
         issuer_id: 74b75ecb-c414-4703-b240-4b603d6e583e
         submit_to_testflight: true                # <- якщо хочеш щоб білд зразу йшов у TestFlight
         submit_to_app_store: false                # <- ставиш true якщо хочеш одразу в App Store review
-
-
