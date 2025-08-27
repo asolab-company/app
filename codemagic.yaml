@@ -6,7 +6,7 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.testbongame.app
-scripts:
+    scripts:
       - name: Build iOS
         script: |
           xcode-project build-ipa \
