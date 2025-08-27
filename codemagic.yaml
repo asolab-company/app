@@ -10,10 +10,10 @@ workflows:
       - name: Build iOS
         script: |
           xcode-project build-ipa \
-            --workspace "ios/SkateTrack.xcodeproj" \
+            --workspace "app/SkateTrack.xcodeproj" \
             --scheme "SkateTrack"
     artifacts:
-      - build/ios/ipa/*.ipa
+      - build/app/ipa/*.ipa
     publishing:
       app_store_connect:
         api_key: QDV3JA55KB   # твій API ключ (у base64)
