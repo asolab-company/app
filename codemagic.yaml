@@ -14,8 +14,7 @@ workflows:
           xcode-project build-ipa \
             --project "SkateTrack.xcodeproj" \
             --scheme "SkateTrack"
-    artifacts:
-      - build/ios/ipa/*.ipa
+
     publishing:
       app_store_connect:
         api_key: QDV3JA55KB
