@@ -13,7 +13,7 @@ workflows:
           --project SkateTrack.xcodeproj \
           --scheme SkateTrack \
           --config Release \
-           --export-options-plist "$(pwd)/app/export_options.plist"
+          --export-options-plist "$CM_BUILD_DIR/app/export_options.plist"
     artifacts:
       - build/app/ipa/*.ipa
     publishing:
