@@ -10,7 +10,7 @@ workflows:
       - name: Build iOS
         script: |
           xcode-project build-ipa \
-          --project app/SkateTrack.xcodeproj \
+          --project SkateTrack.xcodeproj \
           --scheme SkateTrack \
           --config Release \
            --export-options-plist "$(pwd)/app/export_options.plist"
