@@ -16,10 +16,7 @@ workflows:
       - build/app/ipa/*.ipa
     publishing:
       app_store_connect:
-        api_key: MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgE/0gI3IttdMkEDnC
-Vt1GF/avZXvQA4nUYGQqQSRRVmCgCgYIKoZIzj0DAQehRANCAAQiRoRuV1L84LXu
-tPh3NUZN4G4wiottaiOTUvBlRQf0y/2FGKAh7z1qVa6xcfdwG0JV21XrUIz7XnWH
-HgJamdf+   # твій API ключ (у base64)
+        api_key: MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgE/0gI3IttdMkEDnCVt1GF/avZXvQA4nUYGQqQSRRVmCgCgYIKoZIzj0DAQehRANCAAQiRoRuV1L84LXutPh3NUZN4G4wiottaiOTUvBlRQf0y/2FGKAh7z1qVa6xcfdwG0JV21XrUIz7XnWHHgJamdf+   # твій API ключ (у base64)
         key_id: QDV3JA55KB
         issuer_id: 74b75ecb-c414-4703-b240-4b603d6e583e
         submit_to_testflight: true                # <- якщо хочеш щоб білд зразу йшов у TestFlight
