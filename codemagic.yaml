@@ -10,10 +10,9 @@ workflows:
       - name: Build iOS
         script: |
           xcode-project build-ipa \
-            xcode-project build-ipa \
-             --project app/SkateTrack.xcodeproj \
-             --scheme SkateTrack \
-             --config Release
+           --project app/SkateTrack.xcodeproj \
+           --scheme SkateTrack \
+           --config Release
     artifacts:
       - build/app/ipa/*.ipa
     publishing:
