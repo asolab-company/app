@@ -14,6 +14,10 @@ workflows:
           --scheme SkateTrack \
           --config Release \
           --export-options-plist "$CM_BUILD_DIR/app/export_options.plist"
+      - name: Debug repo structure
+        script: |
+          echo "Current dir: $(pwd)"
+          ls -R
     artifacts:
       - build/app/ipa/*.ipa
     publishing:
