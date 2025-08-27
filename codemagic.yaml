@@ -6,3 +6,18 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.testbongame.app
+scripts:
+      - name: Build iOS
+        script: |
+          xcode-project build-ipa \
+            --workspace "ios/SkateTrack.xcodeproj" \
+            --scheme "SkateTrack"
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        api_key: QDV3JA55KB   # твій API ключ (у base64)
+        key_id: QDV3JA55KB
+        issuer_id: 74b75ecb-c414-4703-b240-4b603d6e583e
+        submit_to_testflight: true                # <- якщо хочеш щоб білд зразу йшов у TestFlight
+        submit_to_app_store: false                # <- ставиш true якщо хочеш одразу в App Store review
