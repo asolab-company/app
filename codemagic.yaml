@@ -6,7 +6,7 @@ workflows:
       ios_signing:
         distribution_type: app_store
         provisioning_profiles:
-          - Distribution
+          - Development
     scripts:
       - name: Build iOS
         script: |
