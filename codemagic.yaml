@@ -10,12 +10,13 @@ workflows:
     scripts:
       - name: Build iOS
         script: |
-          xcode-project build-ipa \
-          --project SkateTrack.xcodeproj \
-          --scheme SkateTrack \
-          --config Release \
-          --export-options-plist "export_options.plist"
-          --xcode-project use-profiles
+          xcodebuild -project SkateTrack.xcodeproj \
+           -scheme SkateTrack \
+           -configuration Release \
+           -archivePath $PWD/build/ios/SkateTrack.xcarchive \
+           archive \
+           CODE_SIGN_STYLE=Automatic \
+           COMPILER_INDEX_STORE_ENABLE=NO
     artifacts:
       - build/app/ipa/*.ipa
     publishing:
