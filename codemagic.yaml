@@ -14,9 +14,7 @@ workflows:
           --scheme SkateTrack \
           --config Release \
           --export-options-plist "export_options.plist"
-     scripts:
-       - name: Set up code signing settings on Xcode project
-         script: xcode-project use-profiles
+          --xcode-project use-profiles
     artifacts:
       - build/app/ipa/*.ipa
     publishing:
