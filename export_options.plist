@@ -4,12 +4,6 @@
 <dict>
   <key>method</key>
   <string>app-store</string>
-  <key>compileBitcode</key>
-  <false/>
-  <key>stripSwiftSymbols</key>
-  <true/>
-  <key>signingStyle</key>
-  <string>automatic</string>
   <key>teamID</key>
   <string>X4TA9W5ABT</string>
   <key>stripSwiftSymbols</key>
@@ -18,6 +12,3 @@
   <false/>
 </dict>
 </plist>
-
-
- 
