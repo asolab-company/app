@@ -6,6 +6,14 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.testbongame.app
+        scripts:
+      - name: Build iOS
+        script: |
+          xcode-project build-ipa \
+          --project SkateTrack.xcodeproj \
+          --scheme SkateTrack \
+          --config Release \
+          --export-options-plist "export_options.plist"
     publishing:
       app_store_connect:
         api_key: MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgE/0gI3IttdMkEDnCVt1GF/avZXvQA4nUYGQqQSRRVmCgCgYIKoZIzj0DAQehRANCAAQiRoRuV1L84LXutPh3NUZN4G4wiottaiOTUvBlRQf0y/2FGKAh7z1qVa6xcfdwG0JV21XrUIz7XnWHHgJamdf+   # твій API ключ (у base64)
