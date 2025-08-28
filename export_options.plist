@@ -9,9 +9,7 @@
   <key>stripSwiftSymbols</key>
   <true/>
   <key>signingStyle</key>
-  <string>manual</string>
-  <key>teamID</key>
-  <string>YOUR_TEAM_ID</string>
+  <string>automatic</string>
   <key>provisioningProfiles</key>
   <dict>
     <key>com.your.bundle.id</key>
