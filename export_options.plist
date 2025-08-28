@@ -9,13 +9,15 @@
   <key>stripSwiftSymbols</key>
   <true/>
   <key>signingStyle</key>
-  <string>manual</string>
+  <string>automatic</string>
   <key>teamID</key>
   <string>X4TA9W5ABT</string>
-  <key>provisioningProfiles</key>
-  <dict>
-    <key>com.testbongame.app</key>
-    <string>testbongamez</string>
-  </dict>
+  <key>stripSwiftSymbols</key>
+  <true/>
+  <key>compileBitcode</key>
+  <false/>
 </dict>
 </plist>
+
+
+ 
