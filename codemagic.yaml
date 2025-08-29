@@ -5,19 +5,18 @@ workflows:
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.testbongame.app
+        provisioning_profiles:
+          - Development
     scripts:
       - name: Build iOS
         script: |
-          xcode-project build-ipa \
-          --project SkateTrack.xcodeproj \
-          --scheme SkateTrack \
-          --config Release \
-          --export-options-plist "export_options.plist"
-      - name: Debug repo structure
-        script: |
-          echo "Current dir: $(pwd)"
-          ls -R
+          xcodebuild -project SkateTrack.xcodeproj \
+           -scheme SkateTrack \
+           -configuration Release \
+           -archivePath $PWD/build/ios/SkateTrack.xcarchive \
+           archive \
+           CODE_SIGN_STYLE=Automatic \
+           COMPILER_INDEX_STORE_ENABLE=NO
     artifacts:
       - build/app/ipa/*.ipa
     publishing:
