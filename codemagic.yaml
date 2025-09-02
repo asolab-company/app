@@ -9,6 +9,7 @@ workflows:
     scripts:
       - name: Fetch signing files
         script: |
+<<<<<<< HEAD
           app-store-connect fetch-signing-files \
             com.testbongame.app \
             --type IOS_APP_STORE \
@@ -32,6 +33,13 @@ workflows:
             --project SkateTrack.xcodeproj \
             --scheme SkateTrack \
             --config Release
+=======
+          xcode-project build-ipa \
+          --project SkateTrack.xcodeproj \
+          --scheme SkateTrack \
+          --config Release \
+          --export-options-plist "export_options.plist"
+>>>>>>> 0feae03200b3e64e81ff61fefc09d51785d9dfa7
     artifacts:
       - build/ios/ipa/*.ipa
     publishing:
