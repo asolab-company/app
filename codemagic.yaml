@@ -18,9 +18,12 @@ workflows:
       - name: Fetch signing files
         script: |
           app-store-connect fetch-signing-files \
-            com.testbongame.app \
+            "com.testbongame.app" \
             --type IOS_APP_STORE \
-            --create --save-certificates --save-profiles --preload
+            --issuer-id "$APP_STORE_CONNECT_ISSUER_ID" \
+            --key-id "$APP_STORE_CONNECT_KEY_ID" \
+            --private-key "$APP_STORE_CONNECT_PRIVATE_KEY" \
+            --create
 
       - name: Setup keychain
         script: |
@@ -29,13 +32,13 @@ workflows:
 
       - name: Apply provisioning to project
         script: |
-          xcode-project use-profiles --project SkateTrack.xcodeproj
+          xcode-project use-profiles --project "SkateTrack.xcodeproj"
 
       - name: Build iOS ipa
         script: |
           xcode-project build-ipa \
-            --project SkateTrack.xcodeproj \
-            --scheme SkateTrack \
+            --project "SkateTrack.xcodeproj" \
+            --scheme "SkateTrack" \
             --config Release
 
     artifacts:
