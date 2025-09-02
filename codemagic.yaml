@@ -1,28 +1,43 @@
 workflows:
   ios-workflow:
-    name: iOS Workflow 
-    # ....
+    name: iOS Workflow
     environment:
+      xcode: 16.4
       ios_signing:
         distribution_type: app_store
-        provisioning_profiles:
-          - Development
+        bundle_identifier: com.testbongame.app
     scripts:
-      - name: Build iOS
+      - name: Fetch signing files
         script: |
-          xcodebuild -project SkateTrack.xcodeproj \
-           -scheme SkateTrack \
-           -configuration Release \
-           -archivePath $PWD/build/ios/SkateTrack.xcarchive \
-           archive \
-           CODE_SIGN_STYLE=Automatic \
-           COMPILER_INDEX_STORE_ENABLE=NO
+          app-store-connect fetch-signing-files \
+            com.testbongame.app \
+            --type IOS_APP_STORE \
+            --issuer-id "$APP_STORE_CONNECT_ISSUER_ID" \
+            --key-id "$APP_STORE_CONNECT_KEY_ID" \
+            --private-key "$APP_STORE_CONNECT_PRIVATE_KEY" \
+            --create --save-certificates --save-profiles --preload
+
+      - name: Setup keychain
+        script: |
+          keychain initialize
+          keychain add-certificates
+
+      - name: Apply provisioning to project
+        script: |
+          xcode-project use-profiles --project SkateTrack.xcodeproj
+
+      - name: Build iOS ipa
+        script: |
+          xcode-project build-ipa \
+            --project SkateTrack.xcodeproj \
+            --scheme SkateTrack \
+            --config Release
     artifacts:
-      - build/app/ipa/*.ipa
+      - build/ios/ipa/*.ipa
     publishing:
       app_store_connect:
-        api_key: MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgE/0gI3IttdMkEDnCVt1GF/avZXvQA4nUYGQqQSRRVmCgCgYIKoZIzj0DAQehRANCAAQiRoRuV1L84LXutPh3NUZN4G4wiottaiOTUvBlRQf0y/2FGKAh7z1qVa6xcfdwG0JV21XrUIz7XnWHHgJamdf+   # твій API ключ (у base64)
-        key_id: QDV3JA55KB
-        issuer_id: 74b75ecb-c414-4703-b240-4b603d6e583e
-        submit_to_testflight: true                # <- якщо хочеш щоб білд зразу йшов у TestFlight
-        submit_to_app_store: false                # <- ставиш true якщо хочеш одразу в App Store review
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        key_id: $APP_STORE_CONNECT_KEY_ID
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        submit_to_testflight: true
+        submit_to_app_store: false
